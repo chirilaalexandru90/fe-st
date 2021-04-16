@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { CartOrders } from '../models/order.model';
+import { catchError, map, retry, tap } from 'rxjs/operators';
+import { UserCartOrders } from '../models/user-cart-orders.model';
 
 @Injectable()
 export class CartProductsHttpService {
@@ -10,14 +10,11 @@ export class CartProductsHttpService {
 
   constructor(private http: HttpClient) { }
 
-  getCartProducts(): Observable<CartOrders[]> {
-    return this.http.get<CartOrders[]>(`${this.be}/carts`, {})
-      .pipe(map(response => response));
+  getAllCarts(): Observable<UserCartOrders[]> {
+    return this.http.get<UserCartOrders[]>(`${this.be}/carts`, {})
   }
 
-  getUserCartProducts(id: number) {
-    return this.http.get<CartOrders[]>(`${this.be}/carts/${id}`, {})
-      .pipe(map(response => response));
-
+  getUserCartProducts(id: number): Observable<UserCartOrders> {
+    return this.http.get<UserCartOrders>(`${this.be}/carts/${id}`, {});
   }
 }

@@ -1,30 +1,30 @@
-<div class="row">
-    <div class="col-sm-8">
-        <div class="configuration ml-2">
+<div class="configuration">
+    <div class="row">
+        <div class="col-sm-8">
             Configuration:
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn">
+                    <input type="radio" name='role' (click)="generateAdmin()">
+                    <i class="fa fa-circle-o fa-2x"></i>
+                    <i class="fa fa-check-circle-o fa-2x"></i>
+                    <span class="d-inline-block ml-1">Administrator</span>
+                </label>
+                <label class="btn" (click)="generateCustomer()">
+                    <input type="radio" name='role'>
+                    <i class="fa fa-circle-o fa-2x"></i>
+                    <i class="fa fa-check-circle-o fa-2x"></i>
+                    <span class="d-inline-block ml-1">Customer</span>
+                </label>
+            </div>
         </div>
 
-        <div class="btn-group" data-toggle="buttons">
-            <label class="btn">
-                <input type="radio" name='role' (click)="generateAdmin()">
-                <i class="fa fa-circle-o fa-2x"></i>
-                <i class="fa fa-check-circle-o fa-2x"></i>
-                <span class="d-inline-block ml-1">Administrator</span>
-            </label>
-            <label class="btn" (click)="generateCustomer()">
-                <input type="radio" name='role'>
-                <i class="fa fa-circle-o fa-2x"></i>
-                <i class="fa fa-check-circle-o fa-2x"></i>
-                <span class="d-inline-block ml-1">Customer</span>
-            </label>
+        <div class="col-sm-4 logged-user">
+            <div>Logged User</div>
+            <div>ID: {{ loggedUser?.id }}</div>
+            <div>email: {{ loggedUser?.email }}</div>
+            <div>role: {{ loggedUser?.role }}</div>
         </div>
-    </div>
 
-    <div class="col-sm-4 logged-user">
-        <div>Logged User</div> 
-        <div>ID: {{ loggedUser?.id }}</div>
-        <div>email: {{ loggedUser?.email }}</div>
-        <div>role: {{ loggedUser?.role }}</div>
     </div>
 
 </div>

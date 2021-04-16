@@ -1,6 +1,6 @@
 import { CustomerAddress } from "./customer-address.model";
-import { CustomerName } from "./name.model";
-import { CartOrders } from "./order.model";
+import { CustomerName } from "./customer-name.model";
+import { UserCartOrders } from "./user-cart-orders.model";
 
 export interface User {
     id: number,
@@ -9,6 +9,6 @@ export interface User {
     avatar: string,
     email: string,
     address: CustomerAddress,
-    orders: CartOrders,
+    orders: UserCartOrders,
     role: 'ADMIN' | 'CUSTOMER' // Role is based on i % 2
 }

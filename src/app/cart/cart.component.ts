@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { combineLatest, concat, Subscription } from 'rxjs';
-import { CartOrders } from '../models/order.model';
+import { combineLatest, concat, forkJoin, Subscription } from 'rxjs';
+import { CartProduct } from '../models/cart-product.model';
+import { Product } from '../models/product.model';
+import { UserCartOrders } from '../models/user-cart-orders.model';
 import { User } from '../models/user.model';
 import { CartProductsHttpService } from '../services/cart-products-http.service';
 import { StoreService } from '../services/store.service';
@@ -13,7 +15,7 @@ import { StoreService } from '../services/store.service';
 
 export class CartComponent implements OnInit, OnDestroy {
   loggedUser: User;
-  userCartProducts: CartOrders[];
+  userCartOrders: UserCartOrders = new UserCartOrders();
   cartProductsServiceSubscription: Subscription;
   loggedUserSubscription: Subscription;
 
@@ -23,22 +25,20 @@ export class CartComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getLoggedUser();
+
   }
 
   private getLoggedUser() {
     this.loggedUserSubscription = this.storeService.getLoggedUser().subscribe((user: User) => {
-      this.loggedUser = user
-      this.getUserCartProduct();
+      this.loggedUser = user;
+      this.cartProductsServiceSubscription = this.cartProductsHttpService.getUserCartProducts(this.loggedUser.id)
+        .subscribe((cartOrders: UserCartOrders) => { this.userCartOrders = new UserCartOrders(cartOrders.id, cartOrders.products); console.log(this.userCartOrders) });
     });
   }
 
-  private getUserCartProduct() {
-    this.cartProductsServiceSubscription = this.cartProductsHttpService.getUserCartProducts(this.loggedUser.id)
-      .subscribe((cartOrders: CartOrders[]) => this.userCartProducts = cartOrders);
-  }
 
   ngOnDestroy() {
-    if (this.cartProductsServiceSubscription) this.cartProductsServiceSubscription.unsubscribe();
     if (this.loggedUserSubscription) this.loggedUserSubscription.unsubscribe();
+    if (this.cartProductsServiceSubscription) this.cartProductsServiceSubscription.unsubscribe();
   }
 }

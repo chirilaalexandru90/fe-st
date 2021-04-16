@@ -1,7 +1,16 @@
 <div class="row">
 
-    {{ this.userCartProducts | json}}
-    
-    <div class="col-xs-12">
+    <div class="col-12" *ngFor="let u of userCartOrders.products">
+        <div>
+            Product ID: {{ u.id }}
+            Quantity: {{ u.quantity }}
+        </div>
     </div>
+
+    <div class="col-12 text-center" *ngIf="userCartOrders.products.length === 0">
+        <p>
+            No products added
+        </p>
+    </div>
+
 </div>

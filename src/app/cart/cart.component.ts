@@ -25,14 +25,14 @@ export class CartComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getLoggedUser();
-
   }
 
   private getLoggedUser() {
     this.loggedUserSubscription = this.storeService.getLoggedUser().subscribe((user: User) => {
       this.loggedUser = user;
       this.cartProductsServiceSubscription = this.cartProductsHttpService.getUserCartProducts(this.loggedUser.id)
-        .subscribe((cartOrders: UserCartOrders) => { this.userCartOrders = new UserCartOrders(cartOrders.id, cartOrders.products); console.log(this.userCartOrders) });
+        .subscribe((cartOrders: UserCartOrders) => 
+          this.userCartOrders = new UserCartOrders(cartOrders.id, cartOrders.products));
     });
   }
 

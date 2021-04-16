@@ -55,6 +55,8 @@ export class ConfigurationComponent implements OnInit, OnDestroy {
 
   private storeUser() {
     this.storeService.storeLoggedUser(this.loggedUser);
+    this.storeService.storeUserCart(this.loggedUser.orders.products);
+
   }
 
   ngOnDestroy() {

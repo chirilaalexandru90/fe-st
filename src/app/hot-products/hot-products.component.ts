@@ -5,8 +5,8 @@ import { ProductsHttpService } from '../services/products-http.service';
 
 @Component({
   selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  templateUrl: './hot-products.component.html',
+  styleUrls: ['./hot-products.component.scss']
 })
 export class ProductsComponent implements OnInit, OnDestroy {
   hotProducts: Product[];
@@ -14,19 +14,22 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   constructor(private readonly productsService: ProductsHttpService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.productsServiceSubscription = this.productsService.getProducts().subscribe((r: Product[]) => 
       this.hotProducts = this.extractHotProducts(r));
   }
 
-  private extractHotProducts(pr: Product[]) {
+  private extractHotProducts(pr: Product[]): Product[] {
     return pr.filter((e: Product) => e.discount > 65).sort(() => .5 * Math.random()).slice(0, 12);
   }
 
-  ngOnDestroy(): void {
+  addQuantityOnProduct(e: number) {
+    
+  }
+
+  ngOnDestroy() {
     if (this.productsServiceSubscription) {
       this.productsServiceSubscription.unsubscribe();
     }
   }
-
 }

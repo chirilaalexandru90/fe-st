@@ -2,15 +2,15 @@
 @import "radio.scss";
 
 .configuration,
-.title,
+.main-title,
 .news-banner,
 .shopping-cart,
 .search,
 .hot-products {
     border: 4px solid rgba($lightblue-darkest, 1);
     border-radius: 20px;
-    padding: .5rem;
-    margin: .5rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
 }
 
 .configuration {
@@ -24,4 +24,9 @@
 
 .logged-user {
     font-size: 0.75rem;
+}
+
+.hot-product img{
+    width: 100%;
+    border-radius: 5px;
 }

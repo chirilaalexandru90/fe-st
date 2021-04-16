@@ -7,13 +7,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsHttpService } from './services/products-http.service';
-import { ProductsComponent } from './products/products.component';
-import { ProductComponent } from './product/product.component';
+import { ProductsComponent } from './hot-products/hot-products.component';
 import { RecomendedComponent } from './recomended/recomended.component';
 import { CartComponent } from './cart/cart.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { UsersHttpService } from './services/users-http.service';
 import { CartProductsHttpService } from './services/cart-products-http.service';
+import { ProductComponent } from './hot-products/product/product.component';
 
 @NgModule({
   declarations: [

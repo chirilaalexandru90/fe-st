@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../../models/product.model';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  selector: 'app-hot-product',
+  templateUrl: './hot-product.component.html',
+  styleUrls: ['./hot-product.component.scss']
 })
-export class ProductComponent implements OnInit {
+export class HotProductComponent implements OnInit {
   @Input() product: Product;
   @Output() productId = new EventEmitter<number>();
 

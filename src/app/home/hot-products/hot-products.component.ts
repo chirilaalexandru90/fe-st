@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CartProduct } from '../models/cart-product.model';
 import { Product } from '../models/product.model';
@@ -13,7 +13,7 @@ import { ProductsHttpService } from '../services/products-http.service';
   styleUrls: ['./hot-products.component.scss']
 })
 
-export class ProductsComponent implements OnChanges, OnInit, OnDestroy {
+export class HotProductsComponent implements OnInit, OnDestroy {
   @Input() loggedUser: User;
   hotProducts: Product[];
   productsServiceSubscription: Subscription;
@@ -25,12 +25,14 @@ export class ProductsComponent implements OnChanges, OnInit, OnDestroy {
     private readonly productsService: ProductsHttpService,
     private readonly cartProductsHttpService: CartProductsHttpService) { }
 
-  ngOnChanges() {
-    this.productsServiceSubscription = this.productsService.getProducts().subscribe((r: Product[]) =>
-      this.hotProducts = this.extractHotProducts(r));
-  }
 
   ngOnInit() {
+    this.getHotProducts();
+  }
+
+  private getHotProducts() {
+    this.productsServiceSubscription = this.productsService.getProducts().subscribe((r: Product[]) =>
+      this.hotProducts = this.extractHotProducts(r));
   }
 
   private extractHotProducts(pr: Product[]): Product[] {

@@ -8,8 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './home/cart/cart.component';
 import { ConfigurationComponent } from './home/configuration/configuration.component';
-import { ProductsComponent } from './home/hot-products/hot-products.component';
-import { ProductComponent } from './home/hot-products/product/product.component';
+import { HotProductsComponent } from './home/hot-products/hot-products.component';
+import { HotProductComponent } from './home/hot-products/product/hot-product.component';
 import { RecomendedComponent } from './home/recomended/recomended.component';
 import { CartProductsHttpService } from './home/services/cart-products-http.service';
 import { ProductsHttpService } from './home/services/products-http.service';
@@ -20,8 +20,8 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    ProductsComponent,
-    ProductComponent,
+    HotProductsComponent,
+    HotProductComponent,
     RecomendedComponent,
     CartComponent,
     ConfigurationComponent

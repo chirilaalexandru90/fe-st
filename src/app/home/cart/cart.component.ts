@@ -31,7 +31,7 @@ export class CartComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   private getUserCart() {
-    this.cartProductsServiceSubscription = this.cartProductsHttpService.getUserCartProducts(this.loggedUser.id)
+    if (this.loggedUser) this.cartProductsServiceSubscription = this.cartProductsHttpService.getUserCartProducts(this.loggedUser.id)
       .subscribe((cartOrders: UserCartOrders) =>
         this.userCartOrders = new UserCartOrders(cartOrders.id, cartOrders.products));
   }

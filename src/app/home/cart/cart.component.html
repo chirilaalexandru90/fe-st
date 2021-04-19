@@ -1,13 +1,11 @@
 <div class="row">
-    
-
-    <div class="col-12" *ngFor="let u of userCartOrders.products">
+    <div class="col-12 text-center">
         CART
+    </div>
+    <div class="col-12" *ngFor="let u of userCartOrders.products">
         <div>
             Product ID: {{ u.id }}
-            Quantity: {{ u.quantity }}
-
-            
+            Quantity: {{ u.quantity }}          
         </div>
     </div>
 

@@ -56,7 +56,6 @@ export class ConfigurationComponent implements OnInit, OnDestroy {
 
   private storeUser() {
     this.emitUser.emit(this.loggedUser);
-    // this.storeService.storeLoggedUser(this.loggedUser);
   }
 
   ngOnDestroy() {

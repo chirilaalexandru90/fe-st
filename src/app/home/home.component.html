@@ -33,7 +33,7 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="hot-products">
-            <app-hot-products [loggedUser]="loggedUser"></app-hot-products>
+            <app-hot-products [loggedUser]="loggedUser" (updateCart)="updateCartProducts($event)"></app-hot-products>
           </div>
         </div>
       </div>

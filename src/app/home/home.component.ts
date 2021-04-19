@@ -17,4 +17,10 @@ export class HomeComponent implements OnInit {
     updateLoggedUser(u: User) {
         this.loggedUser = u;
     }
+
+    updateCartProducts(event: boolean) {
+        if (event) {
+            this.loggedUser = { ...this.loggedUser }
+        }
+    }
 }

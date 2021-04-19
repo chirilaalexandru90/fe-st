@@ -20,8 +20,7 @@ export class ConfigurationComponent implements OnInit, OnDestroy {
   @Output() emitUser: EventEmitter<User> = new EventEmitter();
 
   constructor(
-    private readonly usersService: UsersHttpService,
-    private readonly storeService: StoreService
+    private readonly usersService: UsersHttpService
   ) { }
 
   ngOnInit() {

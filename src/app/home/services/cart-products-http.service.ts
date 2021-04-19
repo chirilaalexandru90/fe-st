@@ -20,7 +20,7 @@ export class CartProductsHttpService {
   }
 
   addNewProductToUserCart(userId: number, products: CartProduct[]) {
-    return this.http.put(`${this.be}/carts/${userId}`, { id: userId, products: products });
+    return this.http.put(`${this.be}/carts/${userId}`, new UserCartOrders(userId, products));
   }
 
   createRandomMockProduct() {

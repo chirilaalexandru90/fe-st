@@ -1,5 +1,5 @@
 <div class="row">
     <div class="col-sm-4" *ngFor="let product of hotProducts">
-        <app-hot-product [product]="product" (productId)="addProduct(product.id)"> </app-hot-product>
+        <app-hot-product [product]="product" (emitProductId)="addProduct(product.id)"> </app-hot-product>
     </div>
 </div>

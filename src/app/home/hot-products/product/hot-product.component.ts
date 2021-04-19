@@ -8,7 +8,7 @@ import { Product } from '../../models/product.model';
 })
 export class HotProductComponent implements OnInit {
   @Input() product: Product;
-  @Output() productId = new EventEmitter<number>();
+  @Output() emitProductId = new EventEmitter<number>();
 
   constructor() { }
 
@@ -16,6 +16,6 @@ export class HotProductComponent implements OnInit {
   }
 
   addToCart() {
-    this.productId.emit(this.product.id);
+    this.emitProductId.emit(this.product.id);
   }
 }

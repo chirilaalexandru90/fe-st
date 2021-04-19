@@ -9,6 +9,6 @@ export interface User {
     avatar: string,
     email: string,
     address: CustomerAddress,
-    orders: UserCartOrders,
+    orders: UserCartOrders[],
     role: 'ADMIN' | 'CUSTOMER' // Role is based on i % 2
 }

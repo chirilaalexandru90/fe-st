@@ -1,5 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ResolveStart } from '@angular/router';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Roles } from '../models/roles.model';
 import { User } from '../models/user.model';
@@ -17,6 +16,8 @@ export class ConfigurationComponent implements OnInit, OnDestroy {
   loggedUser: User;
   userListSubscription: Subscription;
   roles = Roles;
+
+  @Output() emitUser: EventEmitter<User> = new EventEmitter();
 
   constructor(
     private readonly usersService: UsersHttpService,
@@ -54,9 +55,8 @@ export class ConfigurationComponent implements OnInit, OnDestroy {
   }
 
   private storeUser() {
-    this.storeService.storeLoggedUser(this.loggedUser);
-    this.storeService.storeUserCart(this.loggedUser.orders.products);
-
+    this.emitUser.emit(this.loggedUser);
+    // this.storeService.storeLoggedUser(this.loggedUser);
   }
 
   ngOnDestroy() {

@@ -6,18 +6,20 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductsHttpService } from './services/products-http.service';
-import { ProductsComponent } from './hot-products/hot-products.component';
-import { RecomendedComponent } from './recomended/recomended.component';
-import { CartComponent } from './cart/cart.component';
-import { ConfigurationComponent } from './configuration/configuration.component';
-import { UsersHttpService } from './services/users-http.service';
-import { CartProductsHttpService } from './services/cart-products-http.service';
-import { ProductComponent } from './hot-products/product/product.component';
+import { CartComponent } from './home/cart/cart.component';
+import { ConfigurationComponent } from './home/configuration/configuration.component';
+import { ProductsComponent } from './home/hot-products/hot-products.component';
+import { ProductComponent } from './home/hot-products/product/product.component';
+import { RecomendedComponent } from './home/recomended/recomended.component';
+import { CartProductsHttpService } from './home/services/cart-products-http.service';
+import { ProductsHttpService } from './home/services/products-http.service';
+import { UsersHttpService } from './home/services/users-http.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     ProductsComponent,
     ProductComponent,
     RecomendedComponent,
